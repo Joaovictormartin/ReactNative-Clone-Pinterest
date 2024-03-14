@@ -1,11 +1,16 @@
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 
 import { theme } from "@/theme";
+import { FILTERS } from "@/utils/filters";
+import Filters from "@/components/Filters";
+import { useState } from "react";
 
-export default function TabOneScreen() {
+export default function Home() {
+  const [filter, setFilter] = useState(FILTERS[0]);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
+      <Filters filters={FILTERS} filter={filter} onChange={setFilter} />
     </View>
   );
 }
@@ -13,14 +18,8 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    padding: 12,
+    paddingTop: 52,
     backgroundColor: theme.colors.black,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: theme.colors.white,
-    fontFamily: theme.fontFamily.regular,
   },
 });
